@@ -9,7 +9,15 @@ def test(test_input, function):
 
 def getInputData(path):
     file = open(path, 'r')
-    return file.readlines()
+    lines = file.readlines()
+    return [int(i) for i in lines]
+
+def getTotalFuelRequirement(data, function):
+    total_fuel = 0
+    for row in data:
+        total_fuel = total_fuel + function(row)
+
+    return total_fuel
 
 def main():
     input_file = 'DayOneInput.txt'
@@ -18,6 +26,8 @@ def main():
 
     test(test_input, function)
     data = getInputData(input_file)
+    total_fuel = getTotalFuelRequirement(data, function)
+    print('Total fuel required is: {}'.format(total_fuel))
 
     return 0
 
