@@ -39,8 +39,6 @@ def testPartOne(test_input):
         output = parseInput(input)
         assert output == output_ref
 
-    return 0
-
 def partOne():
     input_file = 'DayTwoInput.txt'
     test_input = [[[1,0,0,0,99],[2,0,0,0,99]], [[2,3,0,3,99],[2,3,0,6,99]], [[2,4,4,5,99,0],[2,4,4,5,99,9801]], [[1,1,1,4,99,5,6,0,99],[30,1,1,4,2,5,6,0,99]]]
@@ -52,12 +50,31 @@ def partOne():
     output = parseInput(data)
     print('Part One output: {}'.format(output[0]))
 
+def bruteForcePartTwo(data):
+    for i in range(1, 99):
+        noun = i
+        for j in range(1, 99):
+            verb = j
+            tmp_data = data[:]
+            tmp_data[1] = noun
+            tmp_data[2] = verb
+            output = parseInput(tmp_data)[0]
+            if output == 19690720:
+                return noun, verb
+
+    return 0, 0
+
+def partTwo():
+    input_file = 'DayTwoInput.txt'
+    test_input = [[[12, 2], 1202]]
+    data_ref = getData(input_file)
+    data = data_ref
+
+    noun, verb = bruteForcePartTwo(data)
+    print('Part Two output: noun {}, verb {}, answer {}'.format(noun, verb, (100 * noun + verb)))
+
     return 0
 
 if __name__ == '__main__':
     partOne()
-
-
-    1,1,1,4,99,5,6,0,99
-
-    1,1,1,4,2
+    partTwo()
