@@ -49,32 +49,6 @@ def getLineIntersection(point_a_1, point_a_2, point_b_1, point_b_2):
 
     return x, y
 
-
-
-# def getLineIntersection2(point_a_1, point_a_2, point_b_1, point_b_2):
-#     line_a_x = point_a_2[0] - point_a_1[0]
-#     line_a_y = point_a_2[1] - point_a_1[1]
-#     c_a = line_a_x * point_a_1[0] + line_a_y * point_a_2[1]
-
-#     line_b_x = point_b_2[0] - point_b_1[0]
-#     line_b_y = point_b_2[1] - point_b_1[1]
-#     c_b = line_b_x * point_b_1[0] + line_b_y * point_b_2[1]
-    
-#     denominator = line_a_x * line_b_y - line_b_x * line_a_y
-#     if denominator == 0:
-#         # No intersection
-#         return 0, 0
-
-#     intersection_x = (line_b_y * c_a - line_a_y * c_b) / denominator
-#     intersection_y = (line_a_y * c_b - line_b_y * c_a) / denominator
-#     r_x_a = (intersection_x - point_a_1[0]) / (point_a_2[0] - point_a_1[0])
-#     r_y_a = (intersection_y - point_a_1[1]) / (point_a_2[1] - point_a_1[1])
-
-#     if (r_x_a <= 0 or r_x_a >= 1) and (r_y_a <= 0 or r_y_a >= 1):
-#         return intersection_x, intersection_y
-#     else:
-#         return 0, 0
-
 def getLineNodes(moves):
     nodes = []
     pos = np.array([0,0])
@@ -132,7 +106,6 @@ def testPartOne(test_inputs):
 
 def getData(file):
     file = open(file, 'r')
-
     lines = file.readlines()
     lines[0] = lines[0].strip('\n')
     lines[1] = lines[1].strip('\n')
@@ -154,8 +127,6 @@ def partOne():
     intersections = getLineSegmentIntersections(line_one_nodes, line_two_nodes)
     distances = getIntersectionDistances(intersections)
     intersection_distance = getShortestIntersectionDistance(intersections)
-
-    return 0
 
 if __name__ == '__main__':
     partOne()
